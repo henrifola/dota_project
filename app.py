@@ -4,7 +4,9 @@
 
 import getpass
 import json
+import requests as req
 from flask import Flask, render_template, request, jsonify, g, redirect, url_for
+from functools import lru_cache
 
 # ----------------------------------------------------------------------------#
 # Configs
@@ -15,11 +17,11 @@ app = Flask(__name__, static_folder='static', template_folder='templates')
 
 # TODO: Remove before prod
 running_user = getpass.getuser()
-if running_user == "baon":    
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.jinja_env.auto_reload = True
-    debug_mode = True
 
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.jinja_env.auto_reload = True
+debug_mode = True
+api_key = "651D11ADABD8BB56A3A79190F32BFE61"
 
 # ----------------------------------------------------------------------------#
 # Renders
@@ -27,19 +29,35 @@ if running_user == "baon":
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    list_of_heroes = [1,2,3,4,5,6,7,8]
+    get_heroes()
+
+    return render_template("index.html", heroes=list_of_heroes)
 
 
 # ----------------------------------------------------------------------------#
 # API
 # ----------------------------------------------------------------------------#
 
-""" 
-@app.route("/api/hero/avatar", methods=["GET"])
-def surveys():
-    pass
-    return jsonify(False)
- """
+ 
+@app.route("/hero", methods=["GET"])
+def hero():
+    list_of_heroes = [1,2,3,4,5,6,7,8]
+    return jsonify(list_of_heroes)
+
+
+# ----------------------------------------------------------------------------#
+# Helpers
+# ----------------------------------------------------------------------------#
+
+@lru_cache(maxsize=32)
+def get_heroes():
+    resp = req.get("http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key={}".format(api_key))
+    heroes = resp.json()["result"]["heroes"]
+    
+    
+    return heroes
+    
 
 if __name__ == '__main__':
     # Custom jinja functions

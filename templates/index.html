@@ -7,17 +7,52 @@
     <title>Dota Oracle</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
 </head>
 
 <body>
-    <div class="container">
-        <div class="notification is-primary">
-            This container is <strong>centered</strong> on desktop and larger viewports.
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Dota Oracle
+                </h1>
+                <h2 class="subtitle">
+                    Try me. I am a wizard.
+                </h2>
+            </div>
         </div>
+    </section>
+    <div class="container mt-3">
+        <div class="columns is-desktop">
+            <div class="column">
+                <div class="title">Radiant</div>
+            </div>
+            <div class="column">
+                <div class="titler">Dire</div>
+            </div>
+        </div>
+
+        <div class="columns is-desktop">
+            <div class="column">
+                <div class="columns notification">
+                    {% for item in heroes %}
+                    <div class="column">
+                        {{item}}
+                      </div>
+                    {% endfor %} 
+                    
+                </div>
+            </div>
+            <div class="column">
+                <div class="notification"></div>
+            </div>
+        </div>
+
     </div>
 
-    <script src="" async defer></script>
+    <script src="{{url_for('static', filename='js/fetch.js')}}" async defer></script>
 </body>
 
 </html>
