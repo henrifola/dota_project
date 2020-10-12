@@ -29,8 +29,7 @@ api_key = "651D11ADABD8BB56A3A79190F32BFE61"
 
 @app.route("/")
 def index():
-    list_of_heroes = [1,2,3,4,5,6,7,8]
-    get_heroes()
+    list_of_heroes = get_heroes()
 
     return render_template("index.html", heroes=list_of_heroes)
 
@@ -42,7 +41,7 @@ def index():
  
 @app.route("/hero", methods=["GET"])
 def hero():
-    list_of_heroes = [1,2,3,4,5,6,7,8]
+    list_of_heroes = get_heroes()
     return jsonify(list_of_heroes)
 
 
@@ -54,8 +53,9 @@ def hero():
 def get_heroes():
     resp = req.get("http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key={}".format(api_key))
     heroes = resp.json()["result"]["heroes"]
-    
-    
+    heroes = [str(hero["name"]).replace("npc_dota_hero_", "") for hero in heroes]
+
+    print(heroes)
     return heroes
     
 
