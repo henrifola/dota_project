@@ -29,16 +29,14 @@ api_key = "651D11ADABD8BB56A3A79190F32BFE61"
 
 @app.route("/")
 def index():
-    list_of_heroes = get_heroes()
-
-    return render_template("index.html", heroes=list_of_heroes)
+    return render_template("index.html", heroes=get_heroes())
 
 
 # ----------------------------------------------------------------------------#
 # API
 # ----------------------------------------------------------------------------#
 
- 
+
 @app.route("/hero", methods=["GET"])
 def hero():
     list_of_heroes = get_heroes()
@@ -51,11 +49,18 @@ def hero():
 
 @lru_cache(maxsize=32)
 def get_heroes():
+    img_size = "sb.png" #sb.png lg.png full.png vert.jpg
     resp = req.get("http://api.steampowered.com/IEconDOTA2_570/GetHeroes/v1?key={}".format(api_key))
     heroes = resp.json()["result"]["heroes"]
-    heroes = [str(hero["name"]).replace("npc_dota_hero_", "") for hero in heroes]
+
+    # remove prefix from name, add avatar url
+    for hero in heroes:
+        hero["name"] = str(hero["name"]).replace("npc_dota_hero_", "")
+        hero["pretty_name"] = hero["name"].replace("_", " ").title()
+        hero["url"] = "http://cdn.dota2.com/apps/dota2/images/heroes/{}_{}".format(hero["name"], img_size)
 
     print(heroes)
+
     return heroes
     
 

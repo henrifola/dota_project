@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dota Oracle</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Dota Oracle
+                </h1>
+                <h2 class="subtitle">
+                    Try me. I am a wizard.
+                </h2>
+            </div>
+        </div>
+    </section>
+    <div class="container mt-3">
+
+        <!-- Selected -->
+        <div class="columns is-mobile">
+            <div class="column">
+                <div class="title">Radiant</div>
+                <div class="notification"></div>
+
+            </div>
+            <div class="column">
+                <div class="title">Dire</div>
+                <div class="notification"></div>
+            </div>
+        </div>
+
+        <!-- Selection -->
+        <div class="columns is-desktop is-multiline">
+            {% for hero in heroes %}
+            <div class="column">
+                <p class="image is-16by9">
+                    <img src="{{hero['url']}}" alt="{{hero['pretty_name']}}">
+                </p>
+            </div>
+            {% endfor %}
+
+            <!-- {% for hero in heroes %}
+
+            <article class="media">
+                <figure class="media-left">
+                    <p class="image is-16by9">
+                        <img src="{{hero['url']}}">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <strong>{{hero['pretty_name']}}</strong> <small>@{{hero['name']}}</small> <small>id:
+                                {{hero['id']}}</small>
+                        </p>
+                    </div>
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+                <div class="media-right">
+                    <button class="delete"></button>
+                </div>
+            </article>
+            {% endfor %} -->
+
+        </div>
+    </div>
+
+    <script src="{{url_for('static', filename='js/fetch.js')}}" async defer></script>
+</body>
+
+</html>
