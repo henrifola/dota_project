@@ -1,5 +1,5 @@
 .hero-name {
-    font-size: 75%;
+    font-size: 60%;
 }
 
 .hero-box {
@@ -23,6 +23,8 @@
     height: 100%;
     flex:1;
     cursor: pointer;
+    color: white;    
+    font-size: 75%;
 }
 
 .hero-select-left:hover {
@@ -41,6 +43,8 @@
     height: 100%;
     flex:1;
     cursor: pointer;
+    color: white;  
+    font-size: 75%;  
 }
 
 .hero-select-right:hover {
@@ -51,7 +55,10 @@
     background-color: rgba(104, 16, 0, 0.8);
 }
 
-
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
 
 .wrapper {
     display: grid;
