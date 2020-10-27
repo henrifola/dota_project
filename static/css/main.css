@@ -15,6 +15,11 @@
     color: white;
 }
 
+
+.hero-pool {
+    cursor: pointer;
+}
+
 .hero-select-left {
     display: flex;
     justify-content: center;

@@ -25,8 +25,8 @@
                     <h1>Radiant</h1>
                     {% for i in range(5) %}
                     <div class="p-0 d-inline">
-                        <img src="https://via.placeholder.com/106x60.png?text=Hero {{i + 1}}" alt=""
-                            class="img-responsive">
+                        <img id="radiant-{{i}}" src="{{ url_for('static', filename='img/placeholder.png')}}" alt=""
+                            class="hero-pool hero-pool-radiant img-responsive" data-heroid="-1">
                     </div>
                     {% endfor %}
                 </div>
@@ -34,8 +34,8 @@
                     <h1>Dire</h1>
                     {% for i in range(5) %}
                     <div class="p-0 d-inline">
-                        <img src="https://via.placeholder.com/106x60.png?text=Hero {{i + 1}}" alt=""
-                            class="img-responsive">
+                        <img id="dire-{{i}}" src="{{ url_for('static', filename='img/placeholder.png')}}" alt=""
+                            class="hero-pool hero-pool-dire img-responsive" data-heroid="-1">
                     </div>
                     {% endfor %}
                 </div>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="hero-image noselect">
-                            <img src="{{ url_for('static', filename='img/avatar-sb/' + hero['name']) + '.png' }}" height="50px">
+                            <img src="{{ url_for('static', filename='img/avatar-sb/' + hero['id'] | string) + '.png' }}" height="50px">
                         </div>
                         <div class="hero-name text-center bg-dark text-white noselect">{{hero['pretty_name']}}</div>
 
@@ -78,6 +78,7 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='js/picker.js')}}"></script>
+    
 </body>
 
 </html>
