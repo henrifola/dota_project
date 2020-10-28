@@ -59,7 +59,46 @@ $(document).ready(function () {
     $("#suggestBtn1").click(function () {
         $.ajax({
             type: "POST",
-            url: "/suggest",
+            url: "/suggest1",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "radiant": radiant_pool,
+                "dire": dire_pool
+            }),
+            dataType: "json",
+            success: function (data) {
+                let pretty_data = JSON.stringify(data, undefined, 4)
+                output_box.val(pretty_data)
+                setHeight(output_box)
+
+            }
+        });
+    })
+
+    $("#suggestBtn2").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/suggest2",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "radiant": radiant_pool,
+                "dire": dire_pool
+            }),
+            dataType: "json",
+            success: function (data) {
+                let pretty_data = JSON.stringify(data, undefined, 4)
+                output_box.val(pretty_data)
+                setHeight(output_box)
+
+            }
+        });
+    })
+
+
+    $("#suggestBtn3").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/suggest3",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
                 "radiant": radiant_pool,

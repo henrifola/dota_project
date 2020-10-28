@@ -44,16 +44,32 @@ def explore():
 # ----------------------------------------------------------------------------#
 
 # <button 1>
-@app.route("/suggest", methods=["POST"])
-def suggest():
+@app.route("/suggest1", methods=["POST"])
+def suggest1():
     r = request.get_json()
-    print(r)
+
+
+
     return jsonify(r)
 
 # <button 2>
+@app.route("/suggest2", methods=["POST"])
+def suggest2():
+    r = request.get_json()
+
+
+
+    return jsonify(r)
 
 
 # <button 3>
+@app.route("/suggest3", methods=["POST"])
+def suggest3():
+    r = request.get_json()
+
+
+
+    return jsonify(r)
 
 # ----------------------------------------------------------------------------#
 # Explore
@@ -63,7 +79,9 @@ def suggest():
 @app.route("/stats/<int:heroid>", methods=["GET"])
 def get_hero_stats(heroid):
 
-    return str(heroid)
+
+
+    return jsonify(heroid)
 
 # ----------------------------------------------------------------------------#
 # Helpers
