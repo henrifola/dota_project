@@ -48,13 +48,7 @@ def get_heroes():
     print(os.getcwd())
     with open(os.path.join(package_directory, "data/heroes.json"), "r") as fp:
         heroes = json.load(fp)
-
-    # remove prefix from name, add avatar url
-    for hero in heroes:
-        hero["id"] = int(hero["id"])
-        hero["name"] = str(hero["name"]).replace("npc_dota_hero_", "")
-        hero["pretty_name"] = str(hero["name"].replace("_", " ").title())
-
+    
     return heroes
 
 

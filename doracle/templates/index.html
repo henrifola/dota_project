@@ -18,11 +18,27 @@
 
 <body>
     <div class="container-fluid">
-        <div class="jumbotron">
-            <h1 class="display-4">Dota Oracle</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Dota Oracle</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Explore</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <h1>Radiant</h1>
+                    <h3 class="font-weight-light">Radiant</h3>
                     {% for i in range(5) %}
                     <div class="p-0 d-inline">
                         <img id="radiant-{{i}}" src="{{ url_for('static', filename='img/placeholder.png')}}" alt=""
@@ -31,7 +47,7 @@
                     {% endfor %}
                 </div>
                 <div class="col">
-                    <h1>Dire</h1>
+                    <h3 class="font-weight-light">Dire</h3>
                     {% for i in range(5) %}
                     <div class="p-0 d-inline">
                         <img id="dire-{{i}}" src="{{ url_for('static', filename='img/placeholder.png')}}" alt=""
@@ -41,27 +57,45 @@
                 </div>
             </div>
             <hr class="my-4">
-            <div class="heroview">
-                {% for hero in heroes %}
-                <div class="hero-box">
-                    <div class="wrapper">
-                        <div class="hero-select">
-                            <div class="hero-select-left noselect" data-heroid="{{hero['id']}}">
-                                Radiant
-                            </div>
-                            <div class="hero-select-right noselect" data-heroid="{{hero['id']}}">
-                                Dire
+            <div class="row">
+                <div class="col-8">
+                    <div class="heroview">
+                        {% for hero in heroes %}
+                        <div class="hero-box">
+                            <div class="wrapper">
+                                <div class="hero-select">
+                                    <div class="hero-select-left noselect" data-heroid="{{hero['id']}}">
+                                        Radiant
+                                    </div>
+                                    <div class="hero-select-right noselect" data-heroid="{{hero['id']}}">
+                                        Dire
+                                    </div>
+                                </div>
+
+                                <div class="hero-image noselect">
+                                    <img src="{{ url_for('static', filename='img/avatar-sb/' + hero['id'] | string) + '.png' }}"
+                                        width="90px" height="50px">
+                                </div>
+                                <div class="hero-name text-center bg-dark text-white noselect">{{hero['name']}}
+                                </div>
+
                             </div>
                         </div>
-
-                        <div class="hero-image noselect">
-                            <img src="{{ url_for('static', filename='img/avatar-sb/' + hero['id'] | string) + '.png' }}" height="50px">
-                        </div>
-                        <div class="hero-name text-center bg-dark text-white noselect">{{hero['pretty_name']}}</div>
-
+                        {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
+                <div class="col-4">
+                    <div class="row">
+                        <button type="button" class="btn btn-primary m-1">Suggest teams (bias)</button>
+                        <button type="button" class="btn btn-secondary m-1">btn 2</button>
+                        <button type="button" class="btn btn-success m-1">btn 3</button>    
+                    </div>
+                    <div class="row">
+
+                        <textarea class="m-1" ></textarea>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -70,7 +104,7 @@
     <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/picker.js')}}"></script>
-    
+
 </body>
 
 </html>
