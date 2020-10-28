@@ -1,3 +1,4 @@
+.env
 .vscode/
 static/js/jsconfig.json
 # Byte-compiled / optimized / DLL files

@@ -4,9 +4,11 @@
 
 import getpass
 import json
+import os
 import requests as req
 from flask import Flask, render_template, request, jsonify, g, redirect, url_for, send_from_directory
 from functools import lru_cache
+package_directory = os.path.dirname(os.path.abspath(__file__))
 
 # ----------------------------------------------------------------------------#
 # Configs
@@ -43,7 +45,8 @@ def index():
 
 @lru_cache(maxsize=32)
 def get_heroes():
-    with open("data/heroes.json", "r") as fp:
+    print(os.getcwd())
+    with open(os.path.join(package_directory, "data/heroes.json"), "r") as fp:
         heroes = json.load(fp)
 
     # remove prefix from name, add avatar url

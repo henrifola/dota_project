@@ -20,7 +20,6 @@ $(document).ready(function () {
     $(".hero-pool-radiant").click(function () {
         let hero_id = $(this).data("heroid");
         if (hero_id !== -1) {
-            $(this).data("heroid", -1);
             remove_from_pool(radiant_pool, hero_id)
             refresh_images()
             update_images("radiant", radiant_pool)
@@ -33,7 +32,6 @@ $(document).ready(function () {
     $(".hero-pool-dire").click(function () {
         let hero_id = $(this).data("heroid");
         if (hero_id !== -1) {
-            $(this).data("heroid", -1);
             remove_from_pool(dire_pool, hero_id)
             refresh_images()
             update_images("dire", dire_pool)
@@ -48,6 +46,8 @@ $(document).ready(function () {
 function refresh_images(){
     $(".hero-pool").each(function () {
         $(this).attr("src", "/static/img/placeholder.png")
+        $(this).data("heroid", -1);
+
     })
 }
 
