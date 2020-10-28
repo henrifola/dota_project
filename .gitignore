@@ -1,5 +1,6 @@
 .env
-.vscode/
+.vscode
+.idea
 static/js/jsconfig.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
