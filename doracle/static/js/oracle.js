@@ -10,7 +10,7 @@ $(document).ready(function () {
 
     $(".hero-select-left").click(function () {
         let hero_id = $(this).data("heroid");
-        add_to_pool(radiant_pool, hero_id)
+        add_to_pool(radiant_pool, dire_pool, hero_id)
         update_images("radiant", radiant_pool)
         console.log("radiant: " + radiant_pool + "\ndire: " + dire_pool)
 
@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     $(".hero-select-right").click(function () {
         let hero_id = $(this).data("heroid");
-        add_to_pool(dire_pool, hero_id)
+        add_to_pool(dire_pool, radiant_pool, hero_id)
         update_images("dire", dire_pool)
         console.log("radiant: " + radiant_pool + "\ndire: " + dire_pool)
     })
@@ -136,8 +136,8 @@ function update_images(faction, pool) {
 
 }
 
-function add_to_pool(pool, id) {
-    if (!pool.includes(id) && pool.length < 5) {
+function add_to_pool(pool, other_pool, id) {
+    if (!pool.includes(id) && !other_pool.includes(id) && pool.length < 5) {
         pool.push(id)
     }
 }
