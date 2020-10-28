@@ -34,10 +34,36 @@ def index():
     return render_template("index.html", heroes=get_heroes())
 
 
+@app.route("/explore")
+def explore():
+    return render_template("explore.html", heroes=get_heroes())
+
+
 # ----------------------------------------------------------------------------#
-# API
+# Oracle
 # ----------------------------------------------------------------------------#
 
+# <button 1>
+@app.route("/suggest", methods=["POST"])
+def suggest():
+    r = request.get_json()
+    print(r)
+    return jsonify(r)
+
+# <button 2>
+
+
+# <button 3>
+
+# ----------------------------------------------------------------------------#
+# Explore
+# ----------------------------------------------------------------------------#
+
+
+@app.route("/stats/<int:heroid>", methods=["GET"])
+def get_hero_stats(heroid):
+
+    return str(heroid)
 
 # ----------------------------------------------------------------------------#
 # Helpers
@@ -53,8 +79,5 @@ def get_heroes():
 
 
 if __name__ == '__main__':
-    # Custom jinja functions
-    # app.jinja_env.globals.update(prettify_float=prettify_float, prettify_label=prettify_label)
     app.jinja_env.cache = {}
-
     app.run(debug=debug_mode, host='127.0.0.1', port=frontend_port)
