@@ -4,17 +4,13 @@
 
 ### Install
 
-* Clone repository `git clone https://github.com/baovien/dota-oracle` or download `.zip`
 * Go to project root `cd dota-oracle`
-* Run `pip install .`
+* Make sure the conda/virtualenv environment you want to install to is active.
+* Run `pip install -e .`
 
 ### Run
 
 * Start the application by running `python -m doracle.app`
-
-## Authors
-  
-[@baovien](https://github.com/baovien)
 
 ## License
 

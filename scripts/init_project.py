@@ -6,7 +6,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api_key =  os.getenv("API_KEY")
+# API key from steam:
+try:
+    api_key =  os.getenv("API_KEY")
+except KeyError:
+    print("Unable to find the steam api key in the environment variable API_KEY")
+    exit(0)
 
 print(api_key)
 

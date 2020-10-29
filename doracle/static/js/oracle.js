@@ -153,7 +153,7 @@ function remove_from_pool(pool, id) {
 
 function setHeight(jq_in){
     jq_in.each(function(index, elem){
-        // This line will work with pure Javascript (taken from NicB's answer):
+        // works with pure javascript
         elem.style.height = elem.scrollHeight+'px'; 
     });
 }
