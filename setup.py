@@ -13,7 +13,7 @@ setup(
     description="",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/baovien/dota-oracle",
+    url="https://github.com/henrifola/dota_project",
     packages=["doracle"],
     install_requires=['flask'],
 )

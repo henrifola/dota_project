@@ -1,12 +1,17 @@
 import random
-
+import json
 
 class HeroStats:
     def __init__(self):
         pass
 
     def get_winrate(self, hero_id):
-        return random.random()
+        try:
+            with open('data/heroes_data.json', 'r') as fp:
+                data = json.load(fp)
+                return data[hero_id]['win_rate']
+        except:
+            return None
 
     def get_pickrate(self, hero_id):
         return random.random()
@@ -18,3 +23,4 @@ class HeroStats:
     def load(path_to_model: str):
         print("loading model from: {}".format(path_to_model))
         return HeroStats()
+
