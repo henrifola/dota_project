@@ -14,7 +14,6 @@ from doracle.model import HeroStats
 
 
 package_directory = os.path.dirname(os.path.abspath(__file__))
-
 # ----------------------------------------------------------------------------#
 # Configs
 # ----------------------------------------------------------------------------#
@@ -41,6 +40,7 @@ def index():
 
 @app.route("/explore")
 def explore():
+
     return render_template("explore.html", heroes=get_heroes())
 
 
@@ -88,15 +88,13 @@ def get_hero_stats(heroid):
     win_rate = hero_model.get_winrate(heroid)
     pick_rate = hero_model.get_pickrate(heroid)
     best_paired_with = hero_model.get_best_paired_with_hero(heroid)
-
-    hero_name = get_heroes()[heroid]["name"]
-    best_paired_with_name = get_heroes()[best_paired_with]["name"]
-
+    hero_name = get_heroes()[str(heroid)]['name']
+    best_paired_with_name = get_heroes()[str(best_paired_with)]["name"]
     hero_stats = {
-        "hero": hero_name,
-        "win_rate": win_rate,
-        "pick_rate": pick_rate,
-        "best_paired_with": best_paired_with_name
+        "Hero": hero_name,
+        "Win Rate": win_rate,
+        "Pick Rate": pick_rate,
+        #"best_paired_with": best_paired_with_name
     }
 
     print("hero_stats:", hero_stats)

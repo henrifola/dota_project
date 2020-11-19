@@ -8,11 +8,11 @@
             {% for hero in heroes %}
             <div class="hero-box">
                 <div class="wrapper">
-                    <div class="hero-image" data-heroid="{{hero['id']}}">
-                        <img src="{{ url_for('static', filename='img/avatar-sb/' + hero['id'] | string) + '.png' }}"
-                            width="90px" height="50px" alt="{{hero['name']}}">
+                    <div class="hero-image" data-heroid="{{heroes[hero]['id']}}">
+                        <img src="{{ url_for('static', filename='img/avatar-sb/' + heroes[hero]['id'] | string) + '.png' }}"
+                            width="90px" height="50px" alt="{{heroes[hero]['name']}}">
                     </div>
-                    <div class="hero-name text-center bg-dark text-white noselect">{{hero['name']}}
+                    <div class="hero-name text-center bg-dark text-white noselect">{{heroes[hero]['name']}}
                     </div>
 
                 </div>

@@ -3,6 +3,8 @@
 {% block content %}
 
 
+
+
 <div class="row">
     <div class="col">
         <h3 class="font-weight-light">Radiant</h3>
@@ -31,19 +33,19 @@
             <div class="hero-box">
                 <div class="wrapper">
                     <div class="hero-select">
-                        <div class="hero-select-left noselect" data-heroid="{{hero['id']}}">
+                        <div class="hero-select-left noselect" data-heroid="{{heroes[hero]['id']}}">
                             Radiant
                         </div>
-                        <div class="hero-select-right noselect" data-heroid="{{hero['id']}}">
+                        <div class="hero-select-right noselect" data-heroid="{{heroes[hero]['id']}}">
                             Dire
                         </div>
                     </div>
 
                     <div class="hero-image noselect">
-                        <img src="{{ url_for('static', filename='img/avatar-sb/' + hero['id'] | string) + '.png' }}"
-                            width="90px" height="50px" alt="{{hero['name']}}">
+                        <img src="{{ url_for('static', filename='img/avatar-sb/' + heroes[hero]['id'] | string) + '.png' }}"
+                            width="90px" height="50px" alt="{{heroes[hero]['name']}}">
                     </div>
-                    <div class="hero-name text-center bg-dark text-white noselect">{{hero['name']}}
+                    <div class="hero-name text-center bg-dark text-white noselect">{{heroes[hero]['name']}}
                     </div>
 
                 </div>

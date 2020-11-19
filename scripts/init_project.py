@@ -3,7 +3,6 @@ import os
 import json
 from tqdm import tqdm
 from dotenv import load_dotenv
-
 load_dotenv()
 
 # API key from steam:

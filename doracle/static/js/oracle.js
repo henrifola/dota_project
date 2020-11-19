@@ -53,26 +53,30 @@ $(document).ready(function () {
     BUTTON EVENTS
     ======================================
     */
+    function myFunction(xml) {
+  var x, i, xmlDoc, txt;
+  xmlDoc = xml.responseXML;
+  txt = "";
+  x = xmlDoc.getElementsByTagName("CD");
+  for (i = 0; i< x.length; i++) {
+  	debugger;
+    txt += x[i].childNodes[0].nodeValue + "<br>";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
 
     let output_box = $("#outputOracle")
 
     $("#suggestBtn1").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "/suggest1",
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({
-                "radiant": radiant_pool,
-                "dire": dire_pool
-            }),
-            dataType: "json",
-            success: function (data) {
-                let pretty_data = JSON.stringify(data, undefined, 4)
-                output_box.val(pretty_data)
-                setHeight(output_box)
-
-            }
-        });
+    debugger;
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xmlhttp.open("GET", "https://www.w3schools.com/xml/cd_catalog.xml", true);
+  xmlhttp.send();
     })
 
     $("#suggestBtn2").click(function () {
@@ -127,7 +131,6 @@ function refresh_images() {
 
 function update_images(faction, pool) {
     let imgs = $(`.hero-pool-${faction}`)
-
     for (const [i, hero_id] of pool.entries()) {
         $(imgs[i]).attr("src", `/static/img/avatar-sb/${hero_id.toString()}.png`)
         $(imgs[i]).css("height", "60px")
